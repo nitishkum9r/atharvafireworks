@@ -1,0 +1,1209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<meta name="theme-color" content="#1a0505">
+<meta name="description" content="Atharva Fireworks – Diwali Crackers Collection 2026. Premium sparklers, flower pots, rockets & more. Order on WhatsApp.">
+<title>Atharva Fireworks | Diwali Crackers Collection 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════
+   TOKENS & RESET
+═══════════════════════════════════ */
+:root {
+  --wine:       #3d080e;
+  --wine2:      #6b0d18;
+  --gold:       #ffc72c;
+  --gold2:      #ffe07a;
+  --cream:      #fff9ec;
+  --ink:        #1e0a09;
+  --text:       #fff5e0;
+  --muted:      #e2c9a0;
+  --green:      #0ea85a;
+  --green2:     #12d46f;
+  --card-bg:    #fffaed;
+  --card-bdr:   #e2a820;
+  --shadow:     0 8px 32px rgba(0,0,0,.35);
+  --r:          18px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Outfit', system-ui, sans-serif;
+  background: #120404;
+  color: var(--text);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button, input, select { font-family: inherit; }
+
+/* ═══════════════════════════════════
+   TOPBAR
+═══════════════════════════════════ */
+.topbar {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(15,3,3,.95);
+  border-bottom: 2px solid rgba(255,199,44,.35);
+  backdrop-filter: blur(18px);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 12px clamp(14px,4vw,52px);
+  gap: 10px;
+}
+.brand-logo { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-logo .mn { font-family:'Playfair Display',serif; font-size:clamp(1.2rem,4vw,1.8rem); font-weight:900; color:var(--gold); letter-spacing:.06em; }
+.brand-logo .sb { font-size:clamp(.65rem,1.8vw,.8rem); color:var(--muted); letter-spacing:.2em; font-weight:600; text-transform:uppercase; }
+.nav { display:flex; gap:20px; font-size:1rem; font-weight:600; }
+.nav a { color:var(--muted); transition:color .2s; }
+.nav a:hover { color:var(--gold); }
+.topbar-right { display:flex; align-items:center; gap:10px; }
+
+/* cart button */
+.cart-btn {
+  position:relative; background:linear-gradient(135deg,#ffe47a,#ffaa18);
+  border:0; border-radius:999px; padding:11px 18px;
+  font-weight:900; font-size:1rem; color:#2c0d08;
+  cursor:pointer; display:flex; align-items:center; gap:7px;
+  box-shadow:0 4px 16px rgba(255,170,30,.3);
+  transition:transform .2s,filter .2s;
+  white-space:nowrap;
+}
+.cart-btn:hover { transform:translateY(-2px); filter:brightness(1.08); }
+.cart-count {
+  position:absolute; top:-7px; right:-7px;
+  background:#c00; color:#fff; border-radius:50%;
+  width:22px; height:22px; font-size:.75rem; font-weight:900;
+  display:none; align-items:center; justify-content:center;
+}
+.cart-count.show { display:flex; }
+
+/* ═══════════════════════════════════
+   HERO
+═══════════════════════════════════ */
+.hero {
+  position:relative; overflow:hidden;
+  background:radial-gradient(ellipse at 70% 10%,#2b3f80 0,transparent 40%),
+             radial-gradient(ellipse at 10% 90%,#8c1e0a 0,transparent 38%),
+             linear-gradient(140deg,#1a0505 0%,#3a0a10 50%,#0e0615 100%);
+  padding:clamp(28px,8vw,76px) clamp(14px,6vw,80px);
+}
+.hero-inner {
+  display:grid; grid-template-columns:1fr auto;
+  gap:28px; align-items:center;
+  max-width:1200px; margin:0 auto;
+  position:relative; z-index:2;
+}
+canvas#fw { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; }
+.eyebrow { color:var(--gold); font-weight:800; letter-spacing:.2em; text-transform:uppercase; font-size:.82rem; margin-bottom:10px; }
+.hero h1 { font-family:'Playfair Display',serif; font-size:clamp(2.5rem,8vw,6rem); line-height:.9; color:#ffd040; text-shadow:0 4px 0 #9c3d08,0 10px 32px rgba(255,130,20,.35); margin-bottom:8px; }
+.hero h1 span { display:block; font-size:.44em; color:#ffe9b8; letter-spacing:.2em; text-shadow:none; margin-top:14px; }
+.tagline { font-size:1.15rem; color:#f0d8b0; line-height:1.65; max-width:520px; margin:14px 0 22px; }
+.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:7px; border:0; border-radius:999px; cursor:pointer; font-family:inherit; font-weight:800; font-size:1rem; padding:13px 22px; transition:transform .2s,filter .2s,box-shadow .2s; white-space:nowrap; }
+.btn:hover { transform:translateY(-2px); filter:brightness(1.1); }
+.btn:active { transform:translateY(0); }
+.btn-gold { background:linear-gradient(135deg,#ffe47a,#ffaa18); color:#2c0d08; box-shadow:0 6px 20px rgba(255,170,30,.3); }
+.btn-outline { border:2px solid var(--gold); color:var(--gold2); background:rgba(255,255,255,.04); }
+.btn-green { background:linear-gradient(135deg,#13c468,#07883b); color:#fff; box-shadow:0 4px 14px rgba(13,180,90,.3); }
+.btn-dark { background:#3d0a10; color:#ffe8b0; border:1px solid rgba(255,199,44,.3); }
+.hero-poster-wrap { width:clamp(150px,25vw,300px); flex-shrink:0; }
+.hero-poster { width:100%; border-radius:14px; filter:drop-shadow(0 18px 36px rgba(0,0,0,.55)); animation:float 5s ease-in-out infinite; }
+
+/* ═══════════════════════════════════
+   TICKER & BANNER
+═══════════════════════════════════ */
+.ticker { background:linear-gradient(90deg,#d4860f,#ffc72c,#d4860f); color:#1e0505; font-weight:900; font-size:1rem; text-align:center; padding:13px 16px; letter-spacing:.07em; }
+.shop-banner { background:linear-gradient(135deg,#2a0608,#4a0d13); border-top:3px solid var(--gold); border-bottom:3px solid var(--gold); text-align:center; padding:28px 20px; }
+.shop-banner .deco { font-size:2.2rem; margin-bottom:6px; }
+.shop-banner h2 { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,6vw,3.6rem); color:var(--gold); text-shadow:0 3px 0 #8b3c06,0 8px 24px rgba(255,180,30,.4); line-height:1; margin-bottom:4px; }
+.shop-banner p { font-size:1.05rem; color:var(--muted); font-weight:600; letter-spacing:.12em; text-transform:uppercase; }
+
+/* ═══════════════════════════════════
+   SECTION
+═══════════════════════════════════ */
+.section { padding:48px clamp(12px,5vw,72px); }
+.section-head { text-align:center; margin-bottom:32px; }
+.section-head h2 { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,4.5vw,2.8rem); color:var(--gold2); margin:8px 0 10px; }
+.section-head p { font-size:1.05rem; color:var(--muted); max-width:600px; margin:0 auto; }
+
+/* search */
+.search-wrap { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:12px; max-width:760px; margin-inline:auto; }
+.search-box { flex:1; min-width:180px; position:relative; display:flex; align-items:center; }
+.search-box input { width:100%; background:#fff8ee; color:#1e0a09; border:2px solid var(--card-bdr); border-radius:12px; padding:13px 42px 13px 16px; font-size:1rem; outline:none; transition:border-color .2s; }
+.search-box input:focus { border-color:var(--gold); }
+.search-clear-btn {
+  position:absolute; right:12px;
+  background:#dfa62a; color:#2c0c08; border:0;
+  width:26px; height:26px; border-radius:50%;
+  font-weight:900; font-size:.9rem; cursor:pointer;
+  display:none; align-items:center; justify-content:center;
+  transition:all .15s;
+}
+.search-clear-btn:hover { background:#ffd45a; transform:scale(1.1); }
+.active-filter-bar {
+  display:none; align-items:center; justify-content:space-between;
+  background:rgba(255,199,44,.15); border:1px solid rgba(255,199,44,.4);
+  border-radius:10px; padding:8px 14px; margin:0 auto 18px; max-width:760px;
+  font-size:.92rem; color:var(--gold2);
+}
+.clear-filter-btn {
+  background:rgba(255,199,44,.2); border:1px solid rgba(255,199,44,.5);
+  color:#fff; border-radius:6px; padding:4px 10px; font-weight:700;
+  font-size:.82rem; cursor:pointer; transition:all .15s;
+}
+.clear-filter-btn:hover { background:#dfa62a; color:#220505; }
+.filter-sel { background:#fff8ee; color:#1e0a09; border:2px solid var(--card-bdr); border-radius:12px; padding:13px 14px; font-size:1rem; font-weight:600; outline:none; cursor:pointer; min-width:150px; }
+
+/* chips */
+.chips { display:flex; gap:9px; flex-wrap:wrap; justify-content:center; margin-bottom:28px; }
+.chip { background:rgba(255,255,255,.07); border:2px solid rgba(255,255,255,.2); color:var(--muted); border-radius:999px; padding:9px 16px; cursor:pointer; font-size:.95rem; font-weight:700; transition:all .2s; }
+.chip.active,.chip:hover { background:var(--gold); color:#2c0d08; border-color:var(--gold); }
+
+/* ═══════════════════════════════════
+   CATEGORY SECTION HEADER
+═══════════════════════════════════ */
+.cat-group { margin-bottom:48px; }
+.cat-header {
+  display:flex; align-items:center; gap:14px;
+  background:linear-gradient(110deg,#4e0b16,#8a1823);
+  border-radius:16px 16px 0 0;
+  padding:16px 20px; color:#fff7df;
+  border-bottom:3px solid var(--gold);
+}
+.cat-num { width:44px; height:44px; min-width:44px; border-radius:50%; background:linear-gradient(#fff17a,#ffb820); border:2px solid #fff0a0; color:#3a0d08; font-weight:900; font-size:1.25rem; display:grid; place-items:center; }
+.cat-title { font-size:clamp(1.2rem,3vw,1.6rem); font-weight:900; letter-spacing:.04em; text-transform:uppercase; }
+.cat-brands { font-size:.85rem; color:#ffd490; margin-left:auto; text-align:right; display:flex; align-items:center; flex-wrap:wrap; gap:6px; justify-content:flex-end; }
+.cat-brands strong { color:var(--gold); margin-right:2px; font-weight:800; font-size:.78rem; letter-spacing:.05em; }
+.cat-brand-tag {
+  display:inline-flex; align-items:center; gap:5px;
+  background:rgba(255,255,255,.12); border:1px solid rgba(255,210,90,.3);
+  padding:3px 8px; border-radius:6px; font-size:.78rem; color:#fff5df;
+  font-weight:700; cursor:pointer; transition:all .18s;
+  box-shadow:0 2px 4px rgba(0,0,0,.2);
+}
+.cat-brand-tag:hover {
+  background:rgba(255,210,90,.25); border-color:var(--gold);
+  color:var(--gold2); transform:translateY(-1px);
+}
+.cat-brand-tag-img {
+  height:16px; width:auto; max-width:38px;
+  object-fit:contain; border-radius:2px;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,.3));
+}
+
+/* ═══════════════════════════════════
+   ITEMS GRID (inside each category)
+═══════════════════════════════════ */
+.items-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:14px;
+  background:#1c0506;
+  border:2px solid rgba(226,168,32,.3);
+  border-top:0;
+  border-radius:0 0 16px 16px;
+  padding:18px;
+}
+
+/* ═══════════════════════════════════
+   ITEM CARD
+═══════════════════════════════════ */
+.item-card {
+  background:var(--card-bg);
+  border:2px solid var(--card-bdr);
+  border-radius:14px;
+  overflow:hidden;
+  color:var(--ink);
+  display:flex; flex-direction:column;
+  box-shadow:0 4px 16px rgba(0,0,0,.25);
+  transition:transform .22s, box-shadow .22s;
+  cursor:pointer;
+}
+.item-card:hover { transform:translateY(-5px); box-shadow:0 14px 36px rgba(0,0,0,.45); }
+.item-card.in-cart { border-color:#0ea85a; box-shadow:0 0 0 3px rgba(14,168,90,.35); }
+
+.item-img-wrap { position:relative; width:100%; aspect-ratio:1/1; overflow:hidden; background:#ffffff; display:grid; place-items:center; }
+.item-img { width:100%; height:100%; object-fit:contain; padding:6px; transition:transform .3s ease; }
+.item-card:hover .item-img { transform:scale(1.08); }
+.item-badge {
+  position:absolute; top:8px; left:8px;
+  background:var(--gold); color:#2c0d08; font-weight:900;
+  font-size:.72rem; padding:4px 9px; border-radius:999px;
+  letter-spacing:.04em;
+}
+.in-cart-badge {
+  position:absolute; top:8px; right:8px;
+  background:#0ea85a; color:#fff; font-size:1rem;
+  width:28px; height:28px; border-radius:50%;
+  display:none; align-items:center; justify-content:center;
+  font-weight:900;
+}
+.item-card.in-cart .in-cart-badge { display:flex; }
+
+.item-info { padding:10px 12px 4px; flex:1; }
+.item-name { font-size:.98rem; font-weight:800; line-height:1.2; color:#2c0d08; margin-bottom:4px; }
+.item-sub  { font-size:.78rem; color:#7a4a28; font-weight:600; }
+
+.add-btn {
+  margin:8px 12px 12px;
+  background:linear-gradient(135deg,#13c468,#07883b);
+  color:#fff; border:0; border-radius:999px;
+  padding:9px 14px; font-weight:800; font-size:.9rem;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px;
+  transition:transform .18s,filter .18s;
+}
+.add-btn:hover { filter:brightness(1.12); }
+.item-card.in-cart .add-btn { background:linear-gradient(135deg,#e85050,#a01010); }
+
+/* ═══════════════════════════════════
+   CART SIDEBAR
+═══════════════════════════════════ */
+.cart-overlay {
+  position:fixed; inset:0; background:rgba(0,0,0,.6);
+  z-index:300; opacity:0; pointer-events:none; transition:opacity .3s;
+}
+.cart-overlay.open { opacity:1; pointer-events:all; }
+
+.cart-sidebar {
+  position:fixed; top:0; right:-420px; width:min(400px,100vw);
+  height:100%; background:#1a0505;
+  border-left:2px solid rgba(255,199,44,.4);
+  z-index:301; display:flex; flex-direction:column;
+  transition:right .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:-8px 0 40px rgba(0,0,0,.6);
+}
+.cart-sidebar.open { right:0; }
+
+.cart-top {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:18px 20px; border-bottom:1px solid rgba(255,199,44,.25);
+  flex-shrink:0;
+}
+.cart-top h3 { font-family:'Playfair Display',serif; font-size:1.5rem; color:var(--gold); }
+.cart-close { background:transparent; border:0; color:var(--muted); font-size:1.8rem; cursor:pointer; line-height:1; padding:0 4px; }
+.cart-close:hover { color:#fff; }
+
+.cart-body { flex:1; overflow-y:auto; padding:16px 20px; }
+.cart-empty { text-align:center; padding:40px 20px; color:var(--muted); font-size:1.05rem; }
+.cart-empty .big { font-size:2.8rem; margin-bottom:12px; }
+
+.cart-item {
+  display:flex; gap:12px; align-items:flex-start;
+  padding:12px 0; border-bottom:1px solid rgba(255,199,44,.15);
+}
+.cart-item-img { width:56px; height:56px; object-fit:cover; border-radius:10px; flex-shrink:0; border:1px solid rgba(255,199,44,.3); }
+.cart-item-info { flex:1; }
+.cart-item-name { font-weight:800; color:var(--gold2); font-size:.95rem; line-height:1.2; }
+.cart-item-cat  { font-size:.8rem; color:var(--muted); margin-top:2px; }
+.cart-item-qty {
+  display:flex; align-items:center; gap:8px; margin-top:8px;
+}
+.qty-btn { background:rgba(255,199,44,.15); border:1px solid rgba(255,199,44,.3); color:var(--gold); border-radius:6px; width:28px; height:28px; font-size:1.1rem; font-weight:900; cursor:pointer; display:grid; place-items:center; transition:background .18s; }
+.qty-btn:hover { background:rgba(255,199,44,.3); }
+.qty-num { color:#fff; font-weight:800; min-width:20px; text-align:center; }
+.cart-item-del { color:#ff5a5a; background:transparent; border:0; font-size:1.3rem; cursor:pointer; padding:0 4px; margin-left:auto; }
+
+.cart-footer { padding:16px 20px; border-top:1px solid rgba(255,199,44,.25); flex-shrink:0; }
+.cart-summary { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.cart-total-label { color:var(--muted); font-weight:700; font-size:1rem; }
+.cart-total-items { color:var(--gold); font-weight:900; font-size:1.1rem; }
+.cart-order-btn {
+  width:100%; background:linear-gradient(135deg,#13c468,#07883b);
+  color:#fff; border:0; border-radius:999px;
+  padding:16px 20px; font-weight:900; font-size:1.1rem;
+  cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px;
+  transition:transform .2s,filter .2s; box-shadow:0 4px 16px rgba(13,180,90,.35);
+}
+.cart-order-btn:hover { transform:translateY(-2px); filter:brightness(1.1); }
+.cart-clear-btn {
+  width:100%; background:transparent; color:#ff7070;
+  border:1px solid rgba(255,90,90,.3); border-radius:999px;
+  padding:11px 20px; font-weight:700; font-size:.9rem;
+  cursor:pointer; margin-top:8px; transition:all .2s;
+}
+.cart-clear-btn:hover { background:rgba(255,90,90,.1); }
+
+/* seller pick in cart */
+.seller-pick { display:flex; gap:8px; margin-bottom:14px; }
+.seller-pick-btn {
+  flex:1; padding:10px 12px; border-radius:999px;
+  border:2px solid rgba(255,199,44,.3); background:transparent;
+  color:var(--muted); font-weight:700; font-size:.9rem; cursor:pointer;
+  transition:all .2s;
+}
+.seller-pick-btn.active { border-color:var(--gold); background:rgba(255,199,44,.15); color:var(--gold); }
+
+/* ═══════════════════════════════════
+   BRANDS SECTION
+═══════════════════════════════════ */
+.brands-section {
+  background: radial-gradient(circle at 50% 20%, #460d14 0%, #200406 100%);
+  border-top: 2px solid rgba(255,199,44,.4);
+  border-bottom: 2px solid rgba(255,199,44,.4);
+}
+.brand-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+.brand-pill {
+  background: linear-gradient(135deg, #fffcf4 0%, #fff3d6 100%);
+  color: #2e0906;
+  border: 2px solid #e0aa28;
+  padding: 8px 14px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: .95rem;
+  box-shadow: 0 4px 0 #873e0e, 0 6px 14px rgba(0,0,0,.35);
+  transition: all .2s cubic-bezier(.34,1.56,.64,1);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+.brand-pill:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 7px 0 #873e0e, 0 12px 24px rgba(0,0,0,.45);
+  background: #ffffff;
+  border-color: #ffd447;
+}
+.brand-pill:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #873e0e;
+}
+.brand-logo-img {
+  height: 28px;
+  width: auto;
+  max-width: 72px;
+  object-fit: contain;
+  border-radius: 4px;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,.3));
+  background: rgba(40, 10, 10, 0.08);
+  padding: 1px 3px;
+}
+.brand-name {
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════
+   SELLERS SECTION
+═══════════════════════════════════ */
+.sellers-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:18px; max-width:720px; margin:24px auto 0; }
+.seller-card { background:linear-gradient(140deg,#2e0a0d,#150608); border:2px solid rgba(230,185,60,.5); border-radius:var(--r); padding:24px 20px; display:flex; flex-direction:column; gap:14px; }
+.seller-name { font-family:'Playfair Display',serif; font-size:1.75rem; color:var(--gold2); margin-bottom:2px; }
+.seller-phone { font-size:1.1rem; color:var(--muted); font-weight:600; }
+.seller-actions { display:flex; flex-direction:column; gap:9px; }
+
+.how-steps { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:28px; max-width:860px; margin-inline:auto; }
+.step { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:20px 16px; text-align:center; }
+.step-num { color:var(--gold); font-size:1.8rem; font-weight:900; display:block; margin-bottom:6px; }
+.step-title { font-size:1rem; font-weight:800; color:var(--gold2); margin-bottom:4px; }
+.step p { font-size:.9rem; color:var(--muted); line-height:1.5; }
+
+/* ═══════════════════════════════════
+   FOOTER
+═══════════════════════════════════ */
+.footer { text-align:center; padding:32px 16px; background:#0d0303; color:var(--muted); font-size:1rem; }
+.footer strong { font-family:'Playfair Display',serif; color:var(--gold); font-size:1.4rem; }
+.footer .safety { font-size:.82rem; color:#a08060; margin-top:10px; max-width:580px; margin-inline:auto; line-height:1.5; }
+
+/* ═══════════════════════════════════
+   MODAL & TOAST
+═══════════════════════════════════ */
+.modal-backdrop { position:fixed; inset:0; z-index:400; background:rgba(0,0,0,.7); display:none; align-items:center; justify-content:center; padding:18px; }
+.modal-backdrop.show { display:flex; }
+.modal { width:min(460px,100%); background:#fff6dc; color:#2c0e0a; border:3px solid var(--gold); border-radius:22px; padding:26px; box-shadow:0 28px 80px rgba(0,0,0,.6); }
+.modal-hdr { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px; }
+.modal h3 { font-family:'Playfair Display',serif; font-size:1.7rem; color:#340e0a; }
+.modal-close { background:transparent; border:0; font-size:1.7rem; cursor:pointer; color:#7a3020; line-height:1; padding:0 4px; }
+.modal p { color:#6a4030; font-size:1rem; line-height:1.5; margin-bottom:14px; }
+.modal .btn { width:100%; margin-top:10px; font-size:1.1rem; padding:15px 20px; }
+
+.toast { position:fixed; bottom:22px; left:50%; transform:translate(-50%,20px); opacity:0; pointer-events:none; z-index:500; background:#ffe49a; color:#2c0a08; padding:13px 20px; border-radius:999px; font-weight:800; font-size:1rem; transition:all .3s; white-space:nowrap; max-width:90vw; text-align:center; }
+.toast.show { opacity:1; transform:translate(-50%,0); }
+
+.empty { display:none; text-align:center; padding:36px 20px; border:2px dashed rgba(200,150,40,.4); border-radius:14px; color:var(--muted); font-size:1.1rem; }
+
+/* ═══════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════ */
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+@keyframes twinkle { from{opacity:.2;transform:scale(.8) rotate(0)} to{opacity:1;transform:scale(1.2) rotate(25deg)} }
+@keyframes cartBounce { 0%{transform:scale(1)} 40%{transform:scale(1.4)} 70%{transform:scale(.9)} 100%{transform:scale(1)} }
+.cart-btn.bounce { animation:cartBounce .4s ease; }
+
+/* ═══════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════ */
+@media (max-width:1024px) {
+  .items-grid { grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); }
+}
+
+@media (max-width:768px) {
+  .items-grid { grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:11px; padding:14px; }
+  .sellers-grid { grid-template-columns:1fr; }
+  .how-steps { grid-template-columns:1fr; }
+  .cat-header { flex-wrap:wrap; gap:8px; }
+  .cat-brands { width:100%; justify-content:flex-start; margin-left:0; margin-top:4px; font-size:.75rem; }
+  .brand-list { gap:9px; }
+  .brand-pill { padding:7px 11px; font-size:.88rem; gap:8px; }
+  .brand-logo-img { height:24px; max-width:60px; }
+}
+
+@media (max-width:640px) {
+  .nav { display:none; }
+  .topbar { padding:10px 12px; }
+  .cart-btn { padding:10px 14px; font-size:.9rem; }
+
+  .hero-inner { grid-template-columns:1fr; text-align:center; gap:20px; }
+  .hero-poster-wrap { width:clamp(140px,55vw,240px); margin:0 auto; }
+  .tagline { margin-inline:auto; }
+  .hero-actions { justify-content:center; flex-direction:column; align-items:center; }
+  .hero-actions .btn { width:100%; max-width:280px; }
+
+  .items-grid { grid-template-columns:repeat(2,1fr); gap:10px; padding:12px; }
+
+  .section { padding:36px 12px; }
+  .search-wrap { flex-direction:column; }
+  .filter-sel { width:100%; }
+}
+
+/* iPhone 12 mini ≤380px */
+@media (max-width:380px) {
+  .brand-logo .mn { font-size:1.1rem; }
+  .cart-btn { padding:9px 11px; font-size:.82rem; }
+
+  .hero { padding:22px 12px; }
+  .hero h1 { font-size:2.2rem; }
+  .hero-poster-wrap { width:clamp(130px,52vw,200px); }
+
+  .items-grid { grid-template-columns:repeat(2,1fr); gap:9px; padding:10px; }
+  .item-name { font-size:.9rem; }
+  .add-btn { font-size:.82rem; padding:8px 10px; }
+
+  .cat-title { font-size:1.1rem; }
+  .cat-num { width:38px; height:38px; min-width:38px; font-size:1.1rem; }
+  .cat-brand-tag { font-size:.72rem; padding:2px 6px; }
+  .cat-brand-tag-img { height:13px; max-width:28px; }
+
+  .brand-list { gap:7px; }
+  .brand-pill { padding:5px 9px; font-size:.82rem; gap:6px; border-radius:9px; }
+  .brand-logo-img { height:20px; max-width:48px; }
+
+  .cart-sidebar { width:100vw; }
+
+  .how-steps { grid-template-columns:1fr; }
+  .sellers-grid { grid-template-columns:1fr; }
+  .section { padding:28px 10px; }
+}
+
+/* Tiny ≤320px */
+@media (max-width:320px) {
+  .items-grid { grid-template-columns:repeat(2,1fr); }
+  .hero h1 { font-size:1.9rem; }
+  .item-name { font-size:.82rem; }
+}
+
+.reduced-motion * { animation:none!important; transition:none!important; }
+</style>
+</head>
+<body>
+
+<!-- ── Topbar ── -->
+<header class="topbar">
+  <a class="brand-logo" href="#home">
+    <span class="mn">ATHARVA</span>
+    <span class="sb">Fireworks · Diwali 2026</span>
+  </a>
+  <nav class="nav" aria-label="Main">
+    <a href="#catalog">Shop</a>
+    <a href="#brands">Brands</a>
+    <a href="#sellers">Contact</a>
+  </nav>
+  <div class="topbar-right">
+    <button class="cart-btn" id="cartToggle" aria-label="Open cart">
+      🛒 My Order
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+  </div>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero" id="home">
+  <canvas id="fw" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">✨ Diwali Crackers Collection 2026</div>
+      <h1>ATHARVA <span>FIREWORKS</span></h1>
+      <p class="tagline">Celebrate Diwali with colours, lights &amp; happiness! Browse each item, add to your order, and send straight to a seller on WhatsApp.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="#catalog">Browse Collection ↓</a>
+        <a class="btn btn-outline" href="#sellers">Contact a Seller</a>
+      </div>
+    </div>
+    <div class="hero-poster-wrap">
+      <img class="hero-poster" src="./assets/poster.png" alt="Atharva Fireworks poster" loading="eager">
+    </div>
+  </div>
+</section>
+
+<!-- ── Ticker ── -->
+<div class="ticker">✦ BEST BRANDS &nbsp;·&nbsp; QUALITY PRODUCTS &nbsp;·&nbsp; FESTIVE PRICES &nbsp;·&nbsp; WIDE VARIETY &nbsp;·&nbsp; EASY WHATSAPP ORDERS ✦</div>
+
+<!-- ── Shop Banner ── -->
+<div class="shop-banner">
+  <div class="deco">🎆🪔🎆</div>
+  <h2>ATHARVA FIREWORKS</h2>
+  <p>Diwali Crackers Collection 2026</p>
+</div>
+
+<!-- ── Catalog ── -->
+<section class="section" id="catalog">
+  <div class="section-head">
+    <div class="eyebrow">Find your favourites</div>
+    <h2>Our Fireworks Collection</h2>
+    <p>Tap any item to <strong>Add to Order</strong>. When ready, open 🛒 My Order and send via WhatsApp.</p>
+  </div>
+
+  <div class="search-wrap">
+    <div class="search-box">
+      <input id="search" type="search" placeholder="🔎  Search sparklers, rockets, bomb, brands…" aria-label="Search" autocomplete="off">
+      <button class="search-clear-btn" id="searchClear" onclick="clearSearch()" aria-label="Clear search" title="Clear search">✕</button>
+    </div>
+    <select class="filter-sel" id="sort" aria-label="Sort">
+      <option value="default">Default order</option>
+      <option value="az">Name A–Z</option>
+    </select>
+  </div>
+  <div class="active-filter-bar" id="activeFilterBar">
+    <span>Showing crackers for: <strong id="filterKeyword"></strong></span>
+    <button class="clear-filter-btn" onclick="clearSearch()">Clear filter ✕</button>
+  </div>
+  <div class="chips" id="chips"></div>
+
+  <div id="catalog-body"></div>
+  <div class="empty" id="empty">😔 No results. Try a different search or category.</div>
+</section>
+
+<!-- ── Brands ── -->
+<section class="section brands-section" id="brands">
+  <div class="section-head">
+    <div class="eyebrow">Trusted names in our collection</div>
+    <h2>Our Brands</h2>
+    <p>Original packaging brands from the Atharva Fireworks poster. <strong>Tap any brand to view its crackers!</strong></p>
+  </div>
+  <div class="brand-list" id="brandList"></div>
+</section>
+
+<!-- ── Sellers ── -->
+<section class="section" id="sellers">
+  <div class="section-head">
+    <div class="eyebrow">Ready to order?</div>
+    <h2>Contact Our Sellers</h2>
+    <p>Choose a seller and tap WhatsApp or Call. A ready-to-send message opens for you.</p>
+  </div>
+  <div class="sellers-grid">
+    <article class="seller-card">
+      <div>
+        <div class="seller-name">Harsh</div>
+        <div class="seller-phone">📞 +91 77385 04709</div>
+      </div>
+      <div class="seller-actions">
+        <button class="btn btn-green" onclick="openSeller('Harsh')">💬 WhatsApp Harsh</button>
+        <a class="btn btn-dark" href="tel:+917738504709">📞 Call Harsh</a>
+      </div>
+    </article>
+    <article class="seller-card">
+      <div>
+        <div class="seller-name">Manoday</div>
+        <div class="seller-phone">📞 +91 93726 32183</div>
+      </div>
+      <div class="seller-actions">
+        <button class="btn btn-green" onclick="openSeller('Manoday')">💬 WhatsApp Manoday</button>
+        <a class="btn btn-dark" href="tel:+919372632183">📞 Call Manoday</a>
+      </div>
+    </article>
+  </div>
+  <div class="how-steps">
+    <div class="step"><span class="step-num">01</span><div class="step-title">Find</div><p>Browse or search for the firework you want.</p></div>
+    <div class="step"><span class="step-num">02</span><div class="step-title">Add</div><p>Tap "Add to Order" on each item you like.</p></div>
+    <div class="step"><span class="step-num">03</span><div class="step-title">Send</div><p>Open 🛒, pick a seller, press Send!</p></div>
+  </div>
+</section>
+
+<footer class="footer">
+  <strong>ATHARVA FIREWORKS</strong><br>
+  Wishing you and your family a very Happy Diwali! 🪔
+  <div class="safety">Celebrate responsibly. Follow local fireworks regulations and safety instructions. Prices must be confirmed with the seller.</div>
+</footer>
+
+<!-- ── Cart Overlay + Sidebar ── -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<aside class="cart-sidebar" id="cartSidebar" role="dialog" aria-label="Your order">
+  <div class="cart-top">
+    <h3>🛒 My Order</h3>
+    <button class="cart-close" onclick="closeCart()" aria-label="Close cart">×</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div style="margin-bottom:12px">
+      <div style="font-size:.85rem;color:var(--muted);margin-bottom:6px;font-weight:700;">Send order to:</div>
+      <div class="seller-pick">
+        <button class="seller-pick-btn active" id="spHarsh"   onclick="pickSeller('Harsh')">Harsh</button>
+        <button class="seller-pick-btn"         id="spManoday" onclick="pickSeller('Manoday')">Manoday</button>
+      </div>
+    </div>
+    <div class="cart-summary">
+      <span class="cart-total-label">Total items selected:</span>
+      <span class="cart-total-items" id="cartTotalItems">0</span>
+    </div>
+    <button class="cart-order-btn" onclick="sendCartWhatsApp()">💬 Send Order on WhatsApp</button>
+    <button class="cart-clear-btn" onclick="clearCart()">🗑 Clear all items</button>
+  </div>
+</aside>
+
+<!-- ── Modal ── -->
+<div class="modal-backdrop" id="sellerModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-hdr">
+      <h3 id="modalTitle">Contact Seller</h3>
+      <button class="modal-close" onclick="closeModal()">×</button>
+    </div>
+    <p id="modalText">Choose how you'd like to contact this seller.</p>
+    <button class="btn btn-green" id="modalWA">💬 WhatsApp</button>
+    <button class="btn btn-dark"  id="modalCall">📞 Call</button>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ══════════════════════════════════════
+   DATA
+══════════════════════════════════════ */
+const sellers = {
+  Harsh:   { phone:'917738504709',  display:'+91 77385 04709' },
+  Manoday: { phone:'919372632183',  display:'+91 93726 32183' }
+};
+
+const categories = [
+  {
+    id:1, name:'Sparklers', icon:'🎇', type:'Ground & Light',
+    img:'./assets/sparklers.jpg',
+    brands:['Standard','Pothi','Madhuri','Sikandar','Anil','Coronation'],
+    items:[
+      { id:'1a', name:'9 cm Sparklers',             sub:'Short wire sparkler' },
+      { id:'1b', name:'10 cm Plain',                sub:'Plain wire, bright gold' },
+      { id:'1c', name:'10 cm Green & Red',           sub:'Coloured sparks' },
+      { id:'1d', name:'12 cm Plain',                 sub:'Medium wire sparkler' },
+      { id:'1e', name:'12 cm Green & Red',           sub:'Coloured, medium' },
+      { id:'1f', name:'30 cm Plain',                 sub:'Long sparkler wand' },
+      { id:'1g', name:'30 cm Green & Red',           sub:'Long, coloured sparks' },
+    ]
+  },
+  {
+    id:2, name:'Flower Pots', icon:'🎆', type:'Ground & Light',
+    img:'./assets/flower_pot.jpg',
+    brands:['Standard','Win','Madhuri','Multi','Anil','Coronation'],
+    items:[
+      { id:'2a', name:'Small Flower Pot',            sub:'Compact anar fountain' },
+      { id:'2b', name:'Big Flower Pot',              sub:'Large sparkling anar' },
+      { id:'2c', name:'Special Flower Pot',          sub:'Extra sparks & colour' },
+      { id:'2d', name:'Colour Koti & Peth',          sub:'Multicolour fountain' },
+      { id:'2e', name:'Sugar Deluxe',                sub:'Premium sparkling' },
+      { id:'2f', name:'Sheet Dhu Koti',              sub:'Sheet smoke fountain' },
+    ]
+  },
+  {
+    id:3, name:'Ground Chakkers', icon:'🌀', type:'Ground & Light',
+    img:'./assets/chakker.jpg',
+    brands:['Standard','SK','Zing','Apna','Anil','Coronation'],
+    items:[
+      { id:'3a', name:'Big Chakker',                 sub:'Large spinning wheel' },
+      { id:'3b', name:'Special Chakker',             sub:'Extra bright spin' },
+      { id:'3c', name:'Ashoka Chakker',              sub:'Classic design' },
+      { id:'3d', name:'Deluxe Chakker',              sub:'Premium spinner' },
+    ]
+  },
+  {
+    id:4, name:'Celebration Crackers', icon:'🎉', type:'Celebration',
+    img:'./assets/celebration.jpg',
+    brands:['Standard','Anil','Multi','Madhuri','Coronation'],
+    items:[
+      { id:'4a', name:'1K Celebration',              sub:'1,000 shot ladi' },
+      { id:'4b', name:'2K Celebration',              sub:'2,000 shot ladi' },
+      { id:'4c', name:'5K Celebration',              sub:'5,000 shot ladi' },
+      { id:'4d', name:'10K Celebration',             sub:'10,000 shot ladi' },
+    ]
+  },
+  {
+    id:5, name:'Multicolour Shots', icon:'🌈', type:'Aerial',
+    img:'./assets/multicolor_shots.jpg',
+    brands:['Standard','Pothi','Gokul','Anil','Coronation'],
+    items:[
+      { id:'5a', name:"1's Shot",                    sub:'Single aerial burst' },
+      { id:'5b', name:"15's Shot",                   sub:'15 multicolour shots' },
+      { id:'5c', name:"25's Shot",                   sub:'25 aerial bursts' },
+      { id:'5d', name:"40's Shot",                   sub:'40 multicolour shots' },
+      { id:'5e', name:"100's Shot",                  sub:'100 shot pack' },
+      { id:'5f', name:"120's Shot",                  sub:'120 shot bumper pack' },
+    ]
+  },
+  {
+    id:6, name:'Fancy Crackers', icon:'🎊', type:'Fancy',
+    img:'./assets/fancy_crackers.jpg',
+    brands:['Standard','Bhawani','Madhuri','Taimur','Anil','Coronation'],
+    items:[
+      { id:'6a', name:'5 Inch Fancy',                sub:'Small fancy cracker' },
+      { id:'6b', name:'6 Inch Fancy',                sub:'Medium fancy cracker' },
+      { id:'6c', name:'8 Inch Fancy',                sub:'Large fancy cracker' },
+    ]
+  },
+  {
+    id:7, name:"Kids' Fancy Crackers", icon:'🎁', type:'Fancy',
+    img:'./assets/kids_fancy.jpg',
+    brands:['Standard','Zing','Moriya','Anil','Coronation'],
+    items:[
+      { id:'7a', name:'Attract',                     sub:'Fun kids sparkler' },
+      { id:'7b', name:'Butterfly',                   sub:'Butterfly shape cracker' },
+      { id:'7c', name:'Photoflash',                  sub:'Flash & sparkle' },
+      { id:'7d', name:'Whistling',                   sub:'Whistle sound cracker' },
+      { id:'7e', name:'Wondering',                   sub:'Surprising effect' },
+      { id:'7f', name:'Twinkler Wheel',              sub:'Spinning twinkle wheel' },
+      { id:'7g', name:'Pencil Cracker',              sub:'Pencil-shape cracker' },
+    ]
+  },
+  {
+    id:8, name:'Bomb Crackers', icon:'🧨', type:'Sound',
+    img:'./assets/bomb_crackers.jpg',
+    brands:['Standard','Kiran','Madhuri','Anil','Coronation'],
+    items:[
+      { id:'8a', name:'Bullet Bomb',                 sub:'Sharp crack sound' },
+      { id:'8b', name:'Sukdam',                      sub:'Classic Diwali bomb' },
+      { id:'8c', name:'Ladi Bomb',                   sub:'String of bombs' },
+      { id:'8d', name:'King Kong',                   sub:'Extra loud bomb' },
+      { id:'8e', name:'Chocolate Bomb',              sub:'Wrapped bomb cracker' },
+    ]
+  },
+  {
+    id:9, name:'Rockets', icon:'🚀', type:'Aerial',
+    img:'./assets/rockets.jpg',
+    brands:['Standard','Win','Lunik','Anil','Coronation'],
+    items:[
+      { id:'9a', name:'Baby Rocket',                 sub:'Small starter rocket' },
+      { id:'9b', name:'Bomb Rocket',                 sub:'Rocket with loud bang' },
+      { id:'9c', name:'Colour Rocket',               sub:'Coloured trail rocket' },
+      { id:'9d', name:'2 Sound Rocket',              sub:'Double-bang rocket' },
+      { id:'9e', name:'3 Sound Rocket',              sub:'Triple-bang rocket' },
+      { id:'9f', name:'Nazar Rocket',                sub:'Eye-catching rocket' },
+    ]
+  },
+  {
+    id:10, name:'Regular Crackers', icon:'🧧', type:'Regular',
+    img:'./assets/regular.jpg',
+    brands:['Standard','SK','Deepam','Anil','Coronation'],
+    items:[
+      { id:'10a', name:"80's Flower",                sub:'Classic flower ladi' },
+      { id:'10b', name:'50 Deluxe',                  sub:'50 deluxe crackers' },
+      { id:'10c', name:"100's Crackers",             sub:'100 cracker pack' },
+      { id:'10d', name:'200 Deluxe',                 sub:'200 deluxe crackers' },
+      { id:'10e', name:'2K Deluxe',                  sub:'2,000 cracker pack' },
+      { id:'10f', name:'5K Deluxe',                  sub:'5,000 cracker pack' },
+      { id:'10g', name:'10K Deluxe',                 sub:'10,000 cracker bumper' },
+    ]
+  }
+];
+
+const brandsData = [
+  { name: 'Standard',   file: 'standard.png' },
+  { name: 'Simba',      file: 'simba.png' },
+  { name: 'Pothi',      file: 'pothi.png' },
+  { name: 'Madhuri',    file: 'madhuri.png' },
+  { name: 'Sikandar',   file: 'sikandar.png' },
+  { name: 'Anil',       file: 'anil.png' },
+  { name: 'Coronation', file: 'coronation.png' },
+  { name: 'VML',        file: 'vml.png' },
+  { name: 'Muthu',      file: 'muthu.png' },
+  { name: 'SK',         file: 'sk.png' },
+  { name: 'Zing',       file: 'zing.png' },
+  { name: 'Apna',       file: 'apna.png' },
+  { name: 'Gokul',      file: 'gokul.png' },
+  { name: 'Kavya',      file: 'kavya.png' },
+  { name: 'Tenkheda',   file: 'tenkheda.png' },
+  { name: 'Bhawani',    file: 'bhawani.png' },
+  { name: 'Samrat',     file: 'samrat.png' },
+  { name: 'Moriya',     file: 'moriya.png' },
+  { name: 'Surya',      file: 'surya.png' },
+  { name: 'Koras',      file: 'koras.png' },
+  { name: 'SPL',        file: 'spl.png' },
+  { name: 'Lunik',      file: 'lunik.png' },
+  { name: 'Win',        file: 'win.png' },
+  { name: 'Deepam',     file: 'deepam.png' }
+];
+
+const brandLogoMap = Object.fromEntries(brandsData.map(b => [b.name.toLowerCase(), b.file]));
+brandLogoMap['multi'] = 'standard.png';
+brandLogoMap['taimur'] = 'bhawani.png';
+brandLogoMap['kiran'] = 'anil.png';
+
+const allBrands = brandsData.map(b => b.name);
+
+function filterByBrand(brandName) {
+  const searchInput = document.getElementById('search');
+  searchInput.value = brandName;
+  activeCategory = 'All';
+  renderChips();
+  renderCatalog();
+  const catEl = document.getElementById('catalog');
+  if (catEl) catEl.scrollIntoView({ behavior: 'smooth' });
+  showToast(`🔍 Showing crackers for: ${brandName}`);
+}
+
+/* ══════════════════════════════════════
+   CART STATE
+══════════════════════════════════════ */
+let cart = {}; // { itemId: { qty, name, cat, img } }
+let chosenSeller = 'Harsh';
+let activeCategory = 'All';
+
+/* ══════════════════════════════════════
+   CHIPS
+══════════════════════════════════════ */
+function renderChips() {
+  const cats = ['All', ...new Set(categories.map(c => c.type))];
+  document.getElementById('chips').innerHTML = cats.map(c =>
+    `<button class="chip ${c === activeCategory ? 'active' : ''}" onclick="setCategory(${JSON.stringify(c)})">${c}</button>`
+  ).join('');
+}
+function setCategory(c) { activeCategory = c; renderChips(); renderCatalog(); }
+
+/* ══════════════════════════════════════
+   RENDER CATALOG
+══════════════════════════════════════ */
+function clearSearch() {
+  const searchInput = document.getElementById('search');
+  if (searchInput) searchInput.value = '';
+  const clearBtn = document.getElementById('searchClear');
+  if (clearBtn) clearBtn.style.display = 'none';
+  const bar = document.getElementById('activeFilterBar');
+  if (bar) bar.style.display = 'none';
+  renderCatalog();
+}
+
+function renderCatalog() {
+  const searchInput = document.getElementById('search');
+  const q    = (searchInput ? searchInput.value : '').trim().toLowerCase();
+  const sort = document.getElementById('sort').value;
+
+  const clearBtn = document.getElementById('searchClear');
+  if (clearBtn) clearBtn.style.display = q ? 'flex' : 'none';
+
+  const bar = document.getElementById('activeFilterBar');
+  const kw = document.getElementById('filterKeyword');
+  if (bar && kw) {
+    if (q) {
+      bar.style.display = 'flex';
+      kw.textContent = searchInput.value.trim();
+    } else {
+      bar.style.display = 'none';
+    }
+  }
+
+  let cats = categories.filter(cat =>
+    activeCategory === 'All' || cat.type === activeCategory
+  );
+  if (sort === 'az') cats = [...cats].sort((a,b) => a.name.localeCompare(b.name));
+
+  // Filter items within each cat
+  const filtered = cats.map(cat => {
+    const items = q
+      ? cat.items.filter(it => (it.name + ' ' + it.sub + ' ' + cat.name + ' ' + cat.type + ' ' + cat.brands.join(' ')).toLowerCase().includes(q))
+      : cat.items;
+    return { ...cat, items };
+  }).filter(cat => cat.items.length > 0);
+
+  const body = document.getElementById('catalog-body');
+  document.getElementById('empty').style.display = filtered.length ? 'none' : 'block';
+
+  body.innerHTML = filtered.map(cat => `
+    <div class="cat-group" id="cat-${cat.id}">
+      <div class="cat-header">
+        <span class="cat-num">${cat.id}</span>
+        <span class="cat-title">${cat.icon} ${cat.name}</span>
+        <span class="cat-brands">
+          <strong>BRANDS:</strong>
+          ${[...new Set(cat.brands)].map(b => {
+            const logo = brandLogoMap[b.toLowerCase()];
+            return `<span class="cat-brand-tag" onclick="filterByBrand('${b}')" title="Filter items by ${b}">${logo ? `<img class="cat-brand-tag-img" src="./assets/brands/${logo}" alt="${b}">` : ''}${b}</span>`;
+          }).join('')}
+        </span>
+      </div>
+      <div class="items-grid">
+        ${cat.items.map(it => itemCardHTML(it, cat)).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function itemCardHTML(it, cat) {
+  const inCart = !!cart[it.id];
+  const itemImg = `./assets/items/${it.id}.jpg`;
+  return `
+    <div class="item-card ${inCart ? 'in-cart' : ''}" id="card-${it.id}">
+      <div class="item-img-wrap">
+        <img class="item-img" src="${itemImg}" alt="${it.name}" loading="lazy" onerror="this.onerror=null;this.src='${cat.img}'">
+        <span class="item-badge">${cat.icon}</span>
+        <span class="in-cart-badge">✓</span>
+      </div>
+      <div class="item-info">
+        <div class="item-name">${it.name}</div>
+        <div class="item-sub">${it.sub}</div>
+      </div>
+      <button class="add-btn" onclick="toggleCart(${JSON.stringify(it.id)},${JSON.stringify(it.name)},${JSON.stringify(cat.name)},'${itemImg}')" aria-label="${inCart ? 'Remove' : 'Add'} ${it.name}">
+        ${inCart ? '✕ Remove' : '+ Add to Order'}
+      </button>
+    </div>`;
+}
+
+/* ══════════════════════════════════════
+   CART LOGIC
+══════════════════════════════════════ */
+function toggleCart(id, name, cat, img) {
+  if (cart[id]) {
+    delete cart[id];
+    showToast(`Removed: ${name}`);
+  } else {
+    cart[id] = { qty:1, name, cat, img };
+    showToast(`✅ Added: ${name}`);
+    // bounce cart button
+    const cb = document.getElementById('cartToggle');
+    cb.classList.remove('bounce');
+    void cb.offsetWidth;
+    cb.classList.add('bounce');
+  }
+  updateCartUI();
+  // refresh just the card
+  const card = document.getElementById(`card-${id}`);
+  if (card) {
+    const inCart = !!cart[id];
+    card.className = `item-card ${inCart ? 'in-cart' : ''}`;
+    card.querySelector('.add-btn').textContent = inCart ? '✕ Remove' : '+ Add to Order';
+    card.querySelector('.in-cart-badge').style.display = inCart ? 'flex' : 'none';
+  }
+}
+
+function changeQty(id, delta) {
+  if (!cart[id]) return;
+  cart[id].qty += delta;
+  if (cart[id].qty <= 0) {
+    delete cart[id];
+    // update card if visible
+    const card = document.getElementById(`card-${id}`);
+    if (card) {
+      card.className = 'item-card';
+      card.querySelector('.add-btn').textContent = '+ Add to Order';
+      const badge = card.querySelector('.in-cart-badge');
+      if (badge) badge.style.display = 'none';
+    }
+  }
+  updateCartUI();
+  renderCartBody();
+}
+
+function removeFromCart(id) { changeQty(id, -99); updateCartUI(); renderCartBody(); }
+
+function clearCart() {
+  // update all cards
+  Object.keys(cart).forEach(id => {
+    const card = document.getElementById(`card-${id}`);
+    if (card) {
+      card.className = 'item-card';
+      const btn = card.querySelector('.add-btn');
+      if (btn) btn.textContent = '+ Add to Order';
+      const badge = card.querySelector('.in-cart-badge');
+      if (badge) badge.style.display = 'none';
+    }
+  });
+  cart = {};
+  updateCartUI();
+  renderCartBody();
+}
+
+function updateCartUI() {
+  const total = Object.values(cart).reduce((s,i) => s + i.qty, 0);
+  const cc = document.getElementById('cartCount');
+  cc.textContent = total;
+  cc.classList.toggle('show', total > 0);
+  document.getElementById('cartTotalItems').textContent = total;
+  document.getElementById('cartFooter').style.display = total > 0 ? 'block' : 'none';
+}
+
+function renderCartBody() {
+  const body = document.getElementById('cartBody');
+  const items = Object.entries(cart);
+  if (items.length === 0) {
+    body.innerHTML = `<div class="cart-empty"><div class="big">🛒</div><p>Your order is empty.<br>Tap <strong>"Add to Order"</strong> on any item to start!</p></div>`;
+    return;
+  }
+  body.innerHTML = items.map(([id, it]) => `
+    <div class="cart-item">
+      <img class="cart-item-img" src="${it.img}" alt="${it.name}" loading="lazy">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${it.name}</div>
+        <div class="cart-item-cat">${it.cat}</div>
+        <div class="cart-item-qty">
+          <button class="qty-btn" onclick="changeQty('${id}',-1)">−</button>
+          <span class="qty-num">${it.qty}</span>
+          <button class="qty-btn" onclick="changeQty('${id}',1)">+</button>
+        </div>
+      </div>
+      <button class="cart-item-del" onclick="removeFromCart('${id}')" aria-label="Remove ${it.name}">🗑</button>
+    </div>
+  `).join('');
+}
+
+/* ══════════════════════════════════════
+   CART OPEN / CLOSE
+══════════════════════════════════════ */
+function openCart() {
+  renderCartBody();
+  document.getElementById('cartSidebar').classList.add('open');
+  document.getElementById('cartOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartSidebar').classList.remove('open');
+  document.getElementById('cartOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.getElementById('cartToggle').addEventListener('click', () => {
+  const isOpen = document.getElementById('cartSidebar').classList.contains('open');
+  isOpen ? closeCart() : openCart();
+});
+
+/* ══════════════════════════════════════
+   SELLER PICK
+══════════════════════════════════════ */
+function pickSeller(name) {
+  chosenSeller = name;
+  document.getElementById('spHarsh').classList.toggle('active',   name === 'Harsh');
+  document.getElementById('spManoday').classList.toggle('active', name === 'Manoday');
+}
+
+/* ══════════════════════════════════════
+   SEND CART WHATSAPP
+══════════════════════════════════════ */
+function sendCartWhatsApp() {
+  const items = Object.values(cart);
+  if (!items.length) return;
+  const lines = items.map(it => `• ${it.name} (${it.cat}) × ${it.qty}`).join('\n');
+  const msg = `Hi ${chosenSeller}, I'd like to order from *Atharva Fireworks* – Diwali Crackers Collection 2026.\n\n*My Order:*\n${lines}\n\nPlease share prices, availability and delivery details. Thank you! 🪔`;
+  window.open(`https://wa.me/${sellers[chosenSeller].phone}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  closeCart();
+}
+
+/* ══════════════════════════════════════
+   SELLER MODAL
+══════════════════════════════════════ */
+function openSeller(name) {
+  document.getElementById('modalTitle').textContent = `Contact ${name}`;
+  document.getElementById('modalText').textContent  = `${name} – ${sellers[name].display}\nTap WhatsApp to chat or Call to dial.`;
+  document.getElementById('modalWA').textContent    = `💬 WhatsApp ${name}`;
+  document.getElementById('modalCall').textContent  = `📞 Call ${name}`;
+  document.getElementById('modalWA').onclick = () => {
+    const msg = `Hi ${name}, I'm contacting you about *Atharva Fireworks* – Diwali Crackers Collection 2026. Please share prices and availability. 🪔`;
+    window.open(`https://wa.me/${sellers[name].phone}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+    closeModal();
+  };
+  document.getElementById('modalCall').onclick = () => { location.href = 'tel:' + sellers[name].phone; closeModal(); };
+  document.getElementById('sellerModal').classList.add('show');
+}
+function closeModal() { document.getElementById('sellerModal').classList.remove('show'); }
+document.getElementById('sellerModal').addEventListener('click', e => { if (e.target.id === 'sellerModal') closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); closeCart(); } });
+
+/* ══════════════════════════════════════
+   TOAST
+══════════════════════════════════════ */
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+/* ══════════════════════════════════════
+   INIT
+══════════════════════════════════════ */
+document.getElementById('brandList').innerHTML = brandsData.map(b => `
+  <button class="brand-pill" onclick="filterByBrand('${b.name}')" title="Filter collection by ${b.name}">
+    <img class="brand-logo-img" src="./assets/brands/${b.file}" alt="${b.name} logo" loading="lazy">
+    <span class="brand-name">${b.name}</span>
+  </button>
+`).join('');
+document.getElementById('search').value = '';
+renderChips();
+renderCatalog();
+renderCartBody();
+
+document.getElementById('search').addEventListener('input', renderCatalog);
+document.getElementById('sort').addEventListener('change', renderCatalog);
+
+/* ══════════════════════════════════════
+   CANVAS FIREWORKS
+══════════════════════════════════════ */
+const canvas = document.getElementById('fw');
+const ctx    = canvas.getContext('2d');
+let W, H, particles = [];
+
+function resize() {
+  W = canvas.width  = canvas.clientWidth  * (devicePixelRatio||1);
+  H = canvas.height = canvas.clientHeight * (devicePixelRatio||1);
+  ctx.setTransform(devicePixelRatio||1,0,0,devicePixelRatio||1,0,0);
+}
+window.addEventListener('resize', resize);
+resize();
+
+function burst(x, y) {
+  const cols = ['#ffd45a','#ff6b75','#7feaff','#ffad48','#d8a1ff','#a8ff78'];
+  for (let i = 0; i < 52; i++) {
+    const a = Math.random()*Math.PI*2, s = 1+Math.random()*4.2;
+    particles.push({ x,y, vx:Math.cos(a)*s, vy:Math.sin(a)*s, life:48+Math.random()*28, color:cols[Math.floor(Math.random()*cols.length)] });
+  }
+}
+
+function loop() {
+  ctx.clearRect(0,0,W,H);
+  if (Math.random() < .028) burst(Math.random()*canvas.clientWidth, Math.random()*canvas.clientHeight*.75);
+  particles = particles.filter(p => p.life > 0);
+  for (const p of particles) {
+    ctx.globalAlpha = Math.max(0, p.life/68);
+    ctx.fillStyle   = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 1.7, 0, Math.PI*2);
+    ctx.fill();
+    p.x += p.vx; p.y += p.vy; p.vy += .038; p.vx *= .99; p.life--;
+  }
+  ctx.globalAlpha = 1;
+  requestAnimationFrame(loop);
+}
+
+if (!matchMedia('(prefers-reduced-motion:reduce)').matches) loop();
+else document.body.classList.add('reduced-motion');
+</script>
+</body>
+</html>
