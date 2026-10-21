@@ -2,9 +2,10 @@
 
 import React from 'react';
 import ProductCard from './ProductCard';
+import ProductListRow from './ProductListRow';
 import { brandLogoMap } from '@/data/brands';
 
-export default function CategorySection({ category, onBrandClick }) {
+export default function CategorySection({ category, onBrandClick, viewMode = 'grid', onViewDetails }) {
   const uniqueBrands = [...new Set(category.brands || [])];
 
   return (
@@ -141,12 +142,30 @@ export default function CategorySection({ category, onBrandClick }) {
         )}
       </div>
 
-      {/* Responsive Grid: 2 columns on mobile, 3-4 columns on tablet/desktop */}
-      <div className="product-grid">
-        {category.items.map((item) => (
-          <ProductCard key={item.id} item={item} category={category} />
-        ))}
-      </div>
+      {/* Grid or List View Layout */}
+      {viewMode === 'list' ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+          {category.items.map((item) => (
+            <ProductListRow
+              key={item.id}
+              item={item}
+              category={category}
+              onViewDetails={onViewDetails}
+            />
+          ))}
+        </div>
+      ) : (
+        <div className="product-grid">
+          {category.items.map((item) => (
+            <ProductCard
+              key={item.id}
+              item={item}
+              category={category}
+              onViewDetails={onViewDetails}
+            />
+          ))}
+        </div>
+      )}
 
       <style jsx>{`
         .product-grid {

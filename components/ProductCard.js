@@ -2,9 +2,9 @@
 
 import React, { useState } from 'react';
 import { useCart } from '@/context/CartContext';
-import { Plus, Minus, Check, ShoppingBag, Tag } from 'lucide-react';
+import { Plus, Minus, Check, ShoppingBag, Tag, Maximize2 } from 'lucide-react';
 
-export default function ProductCard({ item, category }) {
+export default function ProductCard({ item, category, onViewDetails }) {
   const { cart, addToCart, updateQty } = useCart();
   const [imgError, setImgError] = useState(false);
 
@@ -12,7 +12,6 @@ export default function ProductCard({ item, category }) {
   const isInCart = Boolean(cartEntry);
   const qty = cartEntry ? cartEntry.qty : 0;
 
-  // Each item has its own distinct photo; fallback gracefully to category image if missing
   const imageSrc = imgError
     ? (category?.img || '/assets/celebration.jpg')
     : (item.img || `/assets/items/item-${item.id}.jpg`);
@@ -42,13 +41,18 @@ export default function ProductCard({ item, category }) {
       className="product-card"
     >
       {/* Product Image Container */}
-      <div style={{
-        position: 'relative',
-        width: '100%',
-        paddingTop: '68%',
-        backgroundColor: '#0a0b16',
-        overflow: 'hidden',
-      }}>
+      <div
+        onClick={() => onViewDetails?.(item, category)}
+        style={{
+          position: 'relative',
+          width: '100%',
+          paddingTop: '68%',
+          backgroundColor: '#0a0b16',
+          overflow: 'hidden',
+          cursor: 'pointer',
+        }}
+        title="Tap to zoom image and view details"
+      >
         <img
           src={imageSrc}
           alt={item.name}
@@ -73,6 +77,25 @@ export default function ProductCard({ item, category }) {
           background: 'linear-gradient(180deg, rgba(7, 7, 18, 0.4) 0%, transparent 45%, rgba(7, 7, 18, 0.75) 100%)',
           pointerEvents: 'none',
         }} />
+
+        {/* Zoom Hint Icon on hover */}
+        <div
+          className="zoom-hint"
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'rgba(7, 7, 18, 0.7)',
+            borderRadius: '50%',
+            padding: '8px',
+            opacity: 0,
+            transition: 'opacity 0.2s',
+            pointerEvents: 'none',
+          }}
+        >
+          <Maximize2 size={16} color="#ffffff" />
+        </div>
 
         {/* Category Emoji Badge */}
         <div style={{
@@ -163,18 +186,23 @@ export default function ProductCard({ item, category }) {
           )}
 
           {/* Product Name */}
-          <h3 style={{
-            fontSize: 'clamp(0.82rem, 2.3vw, 0.96rem)',
-            fontWeight: 800,
-            color: '#ffffff',
-            lineHeight: 1.28,
-            marginBottom: '4px',
-            minHeight: '2.5em',
-            display: '-webkit-box',
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: 'vertical',
-            overflow: 'hidden',
-          }}>
+          <h3
+            onClick={() => onViewDetails?.(item, category)}
+            style={{
+              fontSize: 'clamp(0.82rem, 2.3vw, 0.96rem)',
+              fontWeight: 800,
+              color: '#ffffff',
+              lineHeight: 1.28,
+              marginBottom: '4px',
+              minHeight: '2.5em',
+              display: '-webkit-box',
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: 'vertical',
+              overflow: 'hidden',
+              cursor: 'pointer',
+            }}
+            title={item.name}
+          >
             {item.name}
           </h3>
 
@@ -351,6 +379,9 @@ export default function ProductCard({ item, category }) {
       <style jsx>{`
         .product-card:hover .product-card-img {
           transform: scale(1.05);
+        }
+        .product-card:hover .zoom-hint {
+          opacity: 1 !important;
         }
         .product-card:hover {
           border-color: rgba(255, 183, 3, 0.5);

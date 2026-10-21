@@ -173,3 +173,30 @@ input, select {
   66% { border-color: rgba(5, 217, 232, 0.6); }
   100% { border-color: rgba(255, 42, 109, 0.6); }
 }
+
+@media print {
+  body::before,
+  .mobile-cart-bar,
+  header,
+  nav,
+  .fireworks-canvas,
+  button,
+  .zoom-hint {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .product-card, .product-list-row {
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 1px solid #ccc !important;
+    page-break-inside: avoid;
+    box-shadow: none !important;
+  }
+  h1, h2, h3, h4 {
+    color: #000000 !important;
+  }
+}
+

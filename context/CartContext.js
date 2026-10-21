@@ -75,7 +75,7 @@ export function CartProvider({ children }) {
           price: typeof item.price === 'number' ? item.price : null,
           categoryName: category?.name || item.categoryName || 'Crackers',
           categoryIcon: category?.icon || item.categoryIcon || '✨',
-          img: item.img || category?.img || '/assets/celebration.jpg',
+          img: item.img || `/assets/items/item-${item.id}.jpg`,
           fallbackImg: category?.img || '/assets/celebration.jpg',
           qty: newQty,
         },
@@ -86,6 +86,43 @@ export function CartProvider({ children }) {
 
     const shouldOpen = explicitOpen !== null ? explicitOpen : wasEmpty;
     if (shouldOpen) {
+      setIsCartOpen(true);
+    }
+  };
+
+  /**
+   * addMultipleToCart:
+   * Batch adds an array of items (e.g. curated festive combos) in 1 click
+   */
+  const addMultipleToCart = (itemsList, bundleName) => {
+    const wasEmpty = Object.keys(cart).length === 0;
+
+    setCart((prev) => {
+      const updated = { ...prev };
+      itemsList.forEach((it) => {
+        const existing = updated[it.id];
+        const addQty = it.qty || 1;
+        const newQty = existing ? existing.qty + addQty : addQty;
+        updated[it.id] = {
+          id: it.id,
+          srNo: it.srNo,
+          name: it.name,
+          sub: it.sub,
+          brand: it.brand,
+          price: typeof it.price === 'number' ? it.price : null,
+          categoryName: it.categoryName || 'Diwali Pack',
+          categoryIcon: it.categoryIcon || '🎁',
+          img: it.img || `/assets/items/item-${it.id}.jpg`,
+          fallbackImg: it.fallbackImg || '/assets/celebration.jpg',
+          qty: newQty,
+        };
+      });
+      return updated;
+    });
+
+    showToast(`Added "${bundleName || 'Festive Combo'}" (${itemsList.length} items) to cart! 🪔`, 'success');
+
+    if (wasEmpty) {
       setIsCartOpen(true);
     }
   };
@@ -154,9 +191,9 @@ export function CartProvider({ children }) {
     return sum;
   }, 0);
 
-  const sendWhatsAppOrder = () => {
+  const getOrderText = () => {
     const items = Object.values(cart);
-    if (!items.length) return;
+    if (!items.length) return '';
 
     const seller = sellers[chosenSeller] || sellers.Harsh;
     const lines = items
@@ -164,17 +201,24 @@ export function CartProvider({ children }) {
         const priceInfo = typeof it.price === 'number'
           ? `₹${(it.price * it.qty).toLocaleString('en-IN')} (@ ₹${it.price.toLocaleString('en-IN')})`
           : 'Call for price';
-        return `• *${it.name}* × ${it.qty} = ${priceInfo}`;
+        return `• ${it.name} × ${it.qty} = ${priceInfo}`;
       })
       .join('\n');
 
-    let totalText = `💰 *Estimated Total:* ₹${totalAmount.toLocaleString('en-IN')}`;
+    let totalText = `💰 Estimated Total: ₹${totalAmount.toLocaleString('en-IN')}`;
     if (unpricedCount > 0) {
       totalText += ` (+ ${unpricedCount} call-for-price items)`;
     }
 
-    const msg = `Namaste ${seller.name}! 🪔\n\nI would like to place an order from *Atharva Fireworks* (Diwali 2026 PDF Catalog).\n\n📦 *My Order Items (${totalItems} total crackers):*\n${lines}\n\n${totalText}\n\n📢 *Note:* Bulk orders get exclusive discounts. Please confirm item availability and dispatch details.\n\nThank you!`;
+    return `Namaste ${seller.name}! 🪔\n\nI would like to place an order from Atharva Fireworks (Diwali 2026 PDF Catalog):\n\n📦 My Order Items (${totalItems} total crackers):\n${lines}\n\n${totalText}\n\n📢 Note: Bulk orders get exclusive discounts. Please confirm item availability and dispatch details.\n\nThank you!`;
+  };
 
+  const sendWhatsAppOrder = () => {
+    const items = Object.values(cart);
+    if (!items.length) return;
+
+    const seller = sellers[chosenSeller] || sellers.Harsh;
+    const msg = getOrderText();
     const url = `https://wa.me/${seller.phone}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank', 'noopener,noreferrer');
   };
@@ -191,6 +235,7 @@ export function CartProvider({ children }) {
         closeCart,
         toggleCart,
         addToCart,
+        addMultipleToCart,
         removeFromCart,
         updateQty,
         clearCart,
@@ -199,6 +244,7 @@ export function CartProvider({ children }) {
         setChosenSeller,
         toast,
         showToast,
+        getOrderText,
         sendWhatsAppOrder,
       }}
     >

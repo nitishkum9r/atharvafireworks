@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { categories } from '@/data/categories';
 import CategorySection from './CategorySection';
 import BrandBar from './BrandBar';
-import { Search, X, Sparkles, Filter } from 'lucide-react';
+import ProductModal from './ProductModal';
+import { Search, X, Sparkles, Filter, LayoutGrid, List, ArrowUp, Printer, FileText } from 'lucide-react';
 
 const CATEGORY_TABS = [
   'All',
@@ -22,6 +23,48 @@ export default function Catalog() {
   const [activeBrand, setActiveBrand] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState('default');
+  const [viewMode, setViewMode] = useState('grid'); // 'grid' | 'list'
+  const [selectedProduct, setSelectedProduct] = useState(null); // { item, category }
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Monitor scroll for back to top button
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 400) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    const el = document.getElementById('catalog');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  const jumpToCategory = (catName) => {
+    setActiveTab(catName);
+    if (catName !== 'All') {
+      const match = categories.find(
+        (c) =>
+          c.name.toLowerCase() === catName.toLowerCase() ||
+          c.shortName?.toLowerCase() === catName.toLowerCase()
+      );
+      if (match) {
+        setTimeout(() => {
+          const el = document.getElementById(`cat-${match.id}`);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      }
+    }
+  };
 
   const filteredCategories = useMemo(() => {
     const q = searchQuery.trim().toLowerCase();
@@ -112,14 +155,122 @@ export default function Catalog() {
     <>
       <BrandBar activeBrand={activeBrand} onSelectBrand={handleBrandSelect} />
 
-      <section id="catalog" style={{ padding: 'clamp(2rem, 5vw, 3.5rem) 0', scrollMarginTop: '80px' }}>
+      {/* Sticky Category Quick Jump Bar for easy navigation */}
+      <nav
+        aria-label="Category Quick Jump"
+        style={{
+          position: 'sticky',
+          top: '68px',
+          zIndex: 40,
+          backgroundColor: 'rgba(9, 10, 20, 0.92)',
+          backdropFilter: 'blur(16px)',
+          WebkitBackdropFilter: 'blur(16px)',
+          borderBottom: '1px solid rgba(255, 183, 3, 0.2)',
+          padding: '8px 0',
+          boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+        }}
+      >
+        <div className="container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '12px' }}>
+          <div
+            className="no-scrollbar"
+            style={{
+              display: 'flex',
+              gap: '6px',
+              overflowX: 'auto',
+              WebkitOverflowScrolling: 'touch',
+              padding: '2px 0',
+            }}
+          >
+            {CATEGORY_TABS.map((tab) => {
+              const isActive = activeTab === tab;
+              return (
+                <button
+                  key={tab}
+                  onClick={() => jumpToCategory(tab)}
+                  style={{
+                    padding: '5px 13px',
+                    borderRadius: 'var(--radius-full)',
+                    background: isActive
+                      ? 'linear-gradient(135deg, #ffb703 0%, #fb8500 100%)'
+                      : 'rgba(255, 255, 255, 0.05)',
+                    border: isActive
+                      ? '1px solid #ffb703'
+                      : '1px solid rgba(255, 255, 255, 0.1)',
+                    color: isActive ? '#090a0f' : 'var(--text-muted)',
+                    fontSize: '0.78rem',
+                    fontWeight: isActive ? 800 : 600,
+                    whiteSpace: 'nowrap',
+                    flexShrink: 0,
+                    cursor: 'pointer',
+                    transition: 'all 0.18s ease',
+                  }}
+                >
+                  {tab}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Quick View Mode Toggle in Sticky Bar */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            backgroundColor: 'rgba(255, 255, 255, 0.06)',
+            borderRadius: 'var(--radius-full)',
+            padding: '2px',
+            border: '1px solid rgba(255, 255, 255, 0.12)',
+            flexShrink: 0,
+          }}>
+            <button
+              onClick={() => setViewMode('grid')}
+              aria-label="Grid view"
+              title="Visual Card Grid"
+              style={{
+                width: '30px',
+                height: '28px',
+                borderRadius: 'var(--radius-full)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: viewMode === 'grid' ? '#ffb703' : 'transparent',
+                color: viewMode === 'grid' ? '#090a0f' : 'var(--text-muted)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              <LayoutGrid size={14} strokeWidth={2.6} />
+            </button>
+            <button
+              onClick={() => setViewMode('list')}
+              aria-label="List view"
+              title="Quick Wholesale List View"
+              style={{
+                width: '30px',
+                height: '28px',
+                borderRadius: 'var(--radius-full)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: viewMode === 'list' ? '#ffb703' : 'transparent',
+                color: viewMode === 'list' ? '#090a0f' : 'var(--text-muted)',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              <List size={15} strokeWidth={2.6} />
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <section id="catalog" style={{ padding: 'clamp(1.5rem, 4vw, 3rem) 0', scrollMarginTop: '120px' }}>
         <div className="container">
           {/* Header & Controls */}
           <div style={{
             display: 'flex',
             flexDirection: 'column',
             gap: '1.25rem',
-            marginBottom: '2rem',
+            marginBottom: '1.75rem',
           }}>
             <div style={{
               display: 'flex',
@@ -134,34 +285,37 @@ export default function Catalog() {
                   alignItems: 'center',
                   gap: '6px',
                   color: '#ffb703',
-                  fontSize: '0.82rem',
+                  fontSize: '0.8rem',
                   fontWeight: 800,
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
                   marginBottom: '4px',
                 }}>
-                  <Sparkles size={15} />
-                  <span>Diwali 2026 Collection • 111 Items</span>
+                  <Sparkles size={14} />
+                  <span>Diwali 2026 Collection • 111 Branded Items</span>
                 </div>
-                <h2 style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', fontWeight: 900, color: '#fff' }}>
+                <h2 style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.3rem)', fontWeight: 900, color: '#fff' }}>
                   Diwali Crackers Catalog
                 </h2>
               </div>
 
-              {/* Search & Sort */}
+              {/* Actions: Print Price List & Search */}
               <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px',
                 width: '100%',
-                maxWidth: '480px',
+                maxWidth: '520px',
+                flexWrap: 'wrap',
               }}>
+                {/* Search Bar */}
                 <div style={{
                   position: 'relative',
                   flex: 1,
+                  minWidth: '220px',
                 }}>
                   <Search
-                    size={16}
+                    size={15}
                     color="#ffb703"
                     style={{
                       position: 'absolute',
@@ -178,12 +332,12 @@ export default function Catalog() {
                     placeholder="Search crackers, bombs, rockets..."
                     style={{
                       width: '100%',
-                      padding: '9px 34px 9px 34px',
+                      padding: '8px 32px 8px 34px',
                       borderRadius: 'var(--radius-full)',
                       backgroundColor: 'rgba(255, 255, 255, 0.06)',
                       border: '1px solid rgba(255, 183, 3, 0.3)',
                       color: '#ffffff',
-                      fontSize: '0.86rem',
+                      fontSize: '0.84rem',
                       backdropFilter: 'blur(8px)',
                       transition: 'border-color 0.2s',
                     }}
@@ -205,74 +359,57 @@ export default function Catalog() {
                         justifyContent: 'center',
                       }}
                     >
-                      <X size={15} />
+                      <X size={14} />
                     </button>
                   )}
                 </div>
 
+                {/* Sort Dropdown */}
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
                   style={{
-                    padding: '9px 12px',
+                    padding: '8px 12px',
                     borderRadius: 'var(--radius-full)',
                     backgroundColor: 'rgba(255, 255, 255, 0.06)',
                     border: '1px solid rgba(255, 255, 255, 0.15)',
                     color: 'var(--text-muted)',
-                    fontSize: '0.82rem',
+                    fontSize: '0.8rem',
                     fontWeight: 700,
                     cursor: 'pointer',
                     backdropFilter: 'blur(8px)',
                     flexShrink: 0,
                   }}
                 >
-                  <option value="default" style={{ background: '#0e101f' }}>PDF Order (#1 to #111)</option>
+                  <option value="default" style={{ background: '#0e101f' }}>PDF Order (#1–#111)</option>
                   <option value="price-asc" style={{ background: '#0e101f' }}>Price: Low to High</option>
                   <option value="price-desc" style={{ background: '#0e101f' }}>Price: High to Low</option>
                   <option value="name" style={{ background: '#0e101f' }}>Name (A-Z)</option>
                 </select>
-              </div>
-            </div>
 
-            {/* Category Filter Pills */}
-            <div
-              className="no-scrollbar"
-              style={{
-                display: 'flex',
-                gap: '8px',
-                overflowX: 'auto',
-                paddingBottom: '4px',
-                WebkitOverflowScrolling: 'touch',
-              }}
-            >
-              {CATEGORY_TABS.map((tab) => {
-                const isActive = activeTab === tab;
-                return (
-                  <button
-                    key={tab}
-                    onClick={() => setActiveTab(tab)}
-                    style={{
-                      padding: '7px 16px',
-                      borderRadius: 'var(--radius-full)',
-                      background: isActive
-                        ? 'linear-gradient(135deg, #ffb703 0%, #fb8500 100%)'
-                        : 'rgba(255, 255, 255, 0.05)',
-                      border: isActive
-                        ? '1px solid #ffb703'
-                        : '1px solid rgba(255, 255, 255, 0.12)',
-                      color: isActive ? '#090a0f' : 'var(--text-muted)',
-                      fontSize: '0.84rem',
-                      fontWeight: isActive ? 800 : 600,
-                      whiteSpace: 'nowrap',
-                      flexShrink: 0,
-                      transition: 'all 0.2s ease',
-                      boxShadow: isActive ? '0 4px 14px rgba(255, 183, 3, 0.35)' : 'none',
-                    }}
-                  >
-                    {tab}
-                  </button>
-                );
-              })}
+                {/* Print Price List Button */}
+                <button
+                  onClick={() => window.print()}
+                  title="Print / Save Catalog Price List"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '5px',
+                    padding: '8px 14px',
+                    borderRadius: 'var(--radius-full)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                    border: '1px solid rgba(255, 183, 3, 0.35)',
+                    color: '#fed976',
+                    fontSize: '0.8rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    flexShrink: 0,
+                  }}
+                >
+                  <Printer size={14} />
+                  <span>Print List</span>
+                </button>
+              </div>
             </div>
 
             {/* Active Filter Indicators */}
@@ -398,12 +535,61 @@ export default function Catalog() {
                   key={category.id}
                   category={category}
                   onBrandClick={handleBrandSelect}
+                  viewMode={viewMode}
+                  onViewDetails={(item, cat) => setSelectedProduct({ item, category: cat })}
                 />
               ))}
             </div>
           )}
         </div>
       </section>
+
+      {/* Floating Back to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          aria-label="Back to top"
+          style={{
+            position: 'fixed',
+            bottom: '80px',
+            right: '20px',
+            zIndex: 80,
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            backgroundColor: 'rgba(26, 22, 46, 0.92)',
+            border: '1.5px solid #ffb703',
+            color: '#ffb703',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            boxShadow: '0 4px 18px rgba(0,0,0,0.6)',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = '#ffb703';
+            e.currentTarget.style.color = '#090a0f';
+            e.currentTarget.style.transform = 'translateY(-2px)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'rgba(26, 22, 46, 0.92)';
+            e.currentTarget.style.color = '#ffb703';
+            e.currentTarget.style.transform = 'translateY(0)';
+          }}
+        >
+          <ArrowUp size={20} strokeWidth={2.6} />
+        </button>
+      )}
+
+      {/* Detailed Product Zoom / Quick View Modal */}
+      {selectedProduct && (
+        <ProductModal
+          item={selectedProduct.item}
+          category={selectedProduct.category}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </>
   );
 }

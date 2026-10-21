@@ -122,6 +122,35 @@ export default function Hero() {
             >
               <span>Contact Wholesalers</span>
             </a>
+
+            <button
+              onClick={() => window.print()}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '13px 22px',
+                borderRadius: 'var(--radius-full)',
+                backgroundColor: 'rgba(255, 183, 3, 0.12)',
+                border: '1px solid rgba(255, 183, 3, 0.4)',
+                color: '#fed976',
+                fontSize: '0.95rem',
+                fontWeight: 800,
+                backdropFilter: 'blur(10px)',
+                transition: 'all 0.2s ease',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 183, 3, 0.22)';
+                e.currentTarget.style.borderColor = '#ffb703';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'rgba(255, 183, 3, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(255, 183, 3, 0.4)';
+              }}
+            >
+              <span>📄 Print Price List</span>
+            </button>
           </div>
 
           {/* Quick Value Cards - Colorful glassmorphism */}

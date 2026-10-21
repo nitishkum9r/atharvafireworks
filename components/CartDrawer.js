@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import { sellers } from '@/data/sellers';
-import { X, Trash2, Plus, Minus, MessageCircle, ShoppingBag, ArrowRight, Sparkles, Percent } from 'lucide-react';
+import { X, Trash2, Plus, Minus, MessageCircle, ShoppingBag, ArrowRight, Sparkles, Percent, Copy, Check, ShieldCheck, Truck } from 'lucide-react';
 
 export default function CartDrawer() {
   const {
@@ -18,9 +18,12 @@ export default function CartDrawer() {
     clearCart,
     chosenSeller,
     setChosenSeller,
+    getOrderText,
     sendWhatsAppOrder,
+    showToast,
   } = useCart();
 
+  const [copied, setCopied] = useState(false);
   const items = Object.values(cart);
   const seller = sellers[chosenSeller] || sellers.Harsh;
 
@@ -39,6 +42,18 @@ export default function CartDrawer() {
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [isCartOpen, closeCart]);
+
+  const copyOrderText = async () => {
+    try {
+      const text = getOrderText();
+      await navigator.clipboard.writeText(text);
+      setCopied(true);
+      showToast('Order details copied to clipboard! 📋', 'success');
+      setTimeout(() => setCopied(false), 2400);
+    } catch (e) {
+      console.error(e);
+    }
+  };
 
   if (!isCartOpen) return null;
 
@@ -67,7 +82,7 @@ export default function CartDrawer() {
           right: 0,
           bottom: 0,
           width: '100%',
-          maxWidth: '450px',
+          maxWidth: '460px',
           backgroundColor: '#0c0d1c',
           borderLeft: '1.5px solid rgba(255, 183, 3, 0.3)',
           display: 'flex',
@@ -120,6 +135,7 @@ export default function CartDrawer() {
               alignItems: 'center',
               justifyContent: 'center',
               transition: 'all 0.2s',
+              cursor: 'pointer',
             }}
           >
             <X size={18} />
@@ -160,7 +176,7 @@ export default function CartDrawer() {
                 Your cart is empty
               </p>
               <p style={{ fontSize: '0.82rem', lineHeight: 1.5, maxWidth: '240px', marginBottom: '1.5rem', color: 'var(--text-muted)' }}>
-                Click "+ Add to Cart" on any cracker or aerial shot to add it here.
+                Click "+ Add to Cart" on any cracker or curated bundle to add it here.
               </p>
               <button
                 onClick={closeCart}
@@ -172,6 +188,7 @@ export default function CartDrawer() {
                   fontSize: '0.86rem',
                   fontWeight: 800,
                   boxShadow: '0 4px 14px rgba(255, 183, 3, 0.35)',
+                  cursor: 'pointer',
                 }}
               >
                 Browse Crackers
@@ -249,6 +266,7 @@ export default function CartDrawer() {
                               alignItems: 'center',
                               justifyContent: 'center',
                               color: '#fff',
+                              cursor: 'pointer',
                             }}
                           >
                             <Minus size={11} strokeWidth={2.5} />
@@ -267,6 +285,7 @@ export default function CartDrawer() {
                               alignItems: 'center',
                               justifyContent: 'center',
                               color: '#ffb703',
+                              cursor: 'pointer',
                             }}
                           >
                             <Plus size={11} strokeWidth={2.5} />
@@ -310,6 +329,7 @@ export default function CartDrawer() {
                         borderRadius: '6px',
                         transition: 'all 0.15s ease',
                         flexShrink: 0,
+                        cursor: 'pointer',
                       }}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.color = '#ff0055';
@@ -381,6 +401,27 @@ export default function CartDrawer() {
               </div>
             </div>
 
+            {/* Trust Signals */}
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-around',
+              padding: '4px 0',
+              fontSize: '0.68rem',
+              color: 'var(--text-muted)',
+              borderBottom: '1px solid rgba(255, 255, 255, 0.06)',
+            }}>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <ShieldCheck size={12} color="#00f5d4" />
+                <span>No Advance Payment</span>
+              </span>
+              <span>•</span>
+              <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <Truck size={12} color="#05d9e8" />
+                <span>Sivakasi Direct Stock</span>
+              </span>
+            </div>
+
             {/* Seller Choice */}
             <div>
               <div style={{
@@ -411,6 +452,7 @@ export default function CartDrawer() {
                         border: isSelected ? '1.5px solid #ffb703' : '1px solid rgba(255, 255, 255, 0.1)',
                         textAlign: 'left',
                         transition: 'all 0.15s ease',
+                        cursor: 'pointer',
                       }}
                     >
                       <div style={{
@@ -429,7 +471,7 @@ export default function CartDrawer() {
               </div>
             </div>
 
-            {/* WhatsApp CTA */}
+            {/* Primary Action: WhatsApp CTA */}
             <button
               onClick={sendWhatsAppOrder}
               style={{
@@ -446,6 +488,7 @@ export default function CartDrawer() {
                 fontWeight: 900,
                 boxShadow: '0 6px 20px rgba(37, 211, 102, 0.35)',
                 transition: 'all 0.2s ease',
+                cursor: 'pointer',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-1px)';
@@ -461,6 +504,39 @@ export default function CartDrawer() {
               <ArrowRight size={16} strokeWidth={2.4} />
             </button>
 
+            {/* Secondary Action: Copy Order Text */}
+            <button
+              onClick={copyOrderText}
+              style={{
+                width: '100%',
+                padding: '8px',
+                borderRadius: 'var(--radius-full)',
+                backgroundColor: 'rgba(255, 255, 255, 0.06)',
+                border: '1px solid rgba(255, 255, 255, 0.12)',
+                color: copied ? '#00f5d4' : '#ffffff',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '6px',
+                cursor: 'pointer',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              {copied ? (
+                <>
+                  <Check size={14} color="#00f5d4" strokeWidth={3} />
+                  <span>Copied to Clipboard!</span>
+                </>
+              ) : (
+                <>
+                  <Copy size={13} strokeWidth={2.4} />
+                  <span>Copy Order Summary Text</span>
+                </>
+              )}
+            </button>
+
             {/* Clear Cart */}
             <button
               onClick={clearCart}
@@ -471,6 +547,9 @@ export default function CartDrawer() {
                 color: 'var(--text-dim)',
                 textAlign: 'center',
                 transition: 'color 0.2s',
+                cursor: 'pointer',
+                background: 'none',
+                border: 'none',
               }}
               onMouseEnter={(e) => (e.currentTarget.style.color = '#ff0055')}
               onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-dim)')}
